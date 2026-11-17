@@ -1,5 +1,13 @@
 # CrossDemo 决策记录
 
+## WIN-001：交付结果
+
+最终Actions44106602358（源码7662e2db99453809eda78b39bbfa9cc915285969）成功，Windows-2022／MSVC19.44／Qt6.11.1／Direct3D11 WARP。便携包约29.86MB，完整部署后移除Qt SDK的PATH／QML／插件搜索变量再运行，25项检查通过。用户机器默认选择图形后端，不把CI的WARP环境写入包内设置。
+
+首次本地Git直连成功；后续GitHub Git端口间歇连接失败时，改用本机gh直连GitHub Git数据API上传。远程tree和commit SHA均与本地7662e2d完全相同后，才快进main，未建立两套不同历史，也未改系统代理。连接器仅负责只读仓库／Actions与下载引用。
+
+Qt6TaskTree缺失是未使用的可选QmlAssetDownloaderPrivate插件提示；本例Quick配置、编译、QML部署和自检均通过，不为未使用功能额外增加模块。两个失败任务保留真实记录，后文为阶段决策。
+
 ## WIN-001
 
 仓库由FaunaBox下Qt Demo独立初始化。公开单面板使用Qt Quick+自写GLSL/QSB；macOS用Metal，Windows交由Qt选择Direct3D等后端，不使用NSGlassEffectView绘制该面板。只有macOS辅助选项小适配使用AppKit，Windows单独实现。

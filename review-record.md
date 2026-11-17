@@ -1,5 +1,13 @@
 # CrossDemo 审查记录
 
+## WIN-001：最终主审
+
+审查Windows-only辅助实现、CMake平台／编译器条件、QML和GLSL保持、ASCII暂存路径、固定安装器修复、动态部署／SDK隔离后复测、VC CRT、Actions最小权限和产物链接。源码／workflow修复均实际重新构建，未弱化shader像素断言以使CI通过。
+
+核实成功任务44106602358与本地7662e2d同一Git提交；Windows编译和完整部署后25项检查已通过。独立repo及父工程隔离，公开Git清单不含app、旧专用壁纸、证书、缓存或产品源码。历史失败明确保留，未将WARP当硬件性能。用户实体Windows验收与签名分发未完成；本轮可交实验便携包。以下为阶段审查记录。
+
+下载的渲染证据ZIP通过SHA256／CRC核对，已目视检查07-interface.png：内容、文字与背景完整，边缘可见偏折，无整体纹理翻转；属于自身GPU静态输出审阅，仍不计用户物理显示器验收。
+
 ## WIN-001：计划
 
 上传前主审：单面板CMake只在Apple启用OBJCXX/AppKit，MSVC使用UTF-8和W4/WX，移除强制Metal。Windows辅助只读SystemParametersInfo和EnableTransparency；玻璃算法与QML保持。Actions固定依赖commit、contents只读，部署VC CRT与QML，移除SDK路径后复测；WARP作为CI渲染环境不冒称实体GPU性能。自检失败阻止成功产物上传。

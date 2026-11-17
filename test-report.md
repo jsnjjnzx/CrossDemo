@@ -1,5 +1,20 @@
 # CrossDemo 测试报告
 
+## WIN-001：最终云端结果（2026-11-17）
+
+- 成功运行：[44106602358](https://github.com/jsnjjnzx/CrossDemo/actions/runs/44106602358)，源码提交`7662e2db99453809eda78b39bbfa9cc915285969`。
+- Windows Server2022 runner，MSVC19.44，Qt6.11.1，x64 Release；C++／QSB编译通过。Qt6TaskTree是未使用私有资源下载插件的可选依赖提示，本例没有因此缺少运行依赖。
+- 构建树CTest1/1、17项图形检查，5.80秒通过；部署后移除Qt SDK搜索路径，Direct3D11 WARP再次25项检查通过。边缘折射差14.97/255、面板外差0、运动背景差65.1725、柔化差10.8834。
+- Qt/QML插件及app-local VC运行库完整性检查通过，便携程序自检退出码0。WARP是云端渲染正确性检查，不代表实体GPU帧率或能耗。
+- [便携包14338667795](https://github.com/jsnjjnzx/CrossDemo/actions/runs/44106602358/artifacts/14338667795)：29,859,154字节；GitHub记录SHA256 `6a55b3f286ab190e96d85fb73ad009d075977bafafd50943005c21604ad1af7e`。
+- [渲染证据14339361107](https://github.com/jsnjjnzx/CrossDemo/actions/runs/44106602358/artifacts/14339361107)：7张自身窗口GPU图及日志，3,408,680字节。两项Actions产物保留30天。
+
+本机Mac同一跨平台源码Release／默认Metal的17项检查通过（2.32秒），键盘公开资源替换后CMake构建通过；YAML、三脚本bash -n、Git diff和上传边界检查通过。
+
+渲染证据ZIP本地SHA256／CRC通过，已审阅Windows自身GPU输出07-interface.png，布局／文字完整且边缘有偏折。源图和portable日志保存于本地忽略的build/ci-evidence/，不提交二进制测试证据。
+
+未执行Windows实体机器／独显／混合DPI／持续性能／读屏／用户视觉验收、CU或代码签名；Windows包为未签名实验包。以下保留失败及准备阶段记录，不将其计为通过。
+
 ## WIN-001：计划
 
 上传前结果：本机Qt6.11.1 Release及QSB重新构建通过，移除强制Metal后默认后端的17项GPU检查通过，CTest 1/1、2.32秒。Ruby标准YAML解析Windows workflow结构通过；三份Mac build.sh的bash -n通过。独立Git暂存35文件，diff --cached --check通过，清单排除app、签名／本地配置、缓存及旧wallpaper.png。

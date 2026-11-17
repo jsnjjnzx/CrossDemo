@@ -4,6 +4,8 @@ Qt Quick 液态玻璃的 Windows／macOS 对照实验。同一块可拖动玻璃
 
 ## Windows 测试包
 
+2026-11-17已通过的版本：[下载 Windows x64 便携包](https://github.com/jsnjjnzx/CrossDemo/actions/runs/44106602358/artifacts/14338667795)（约30MB，Actions保留30天），[构建记录](https://github.com/jsnjjnzx/CrossDemo/actions/runs/44106602358)。源码提交`7662e2d`，完整部署后的25项图形检查通过。
+
 打开 [Windows Qt Demo Actions](https://github.com/jsnjjnzx/CrossDemo/actions/workflows/windows.yml)，进入最新成功的构建，在 Artifacts 下载 **CrossDemo-Windows-x64**。完整解压后双击 `QtLiquidSurface.exe`，保留旁边的 DLL、`platforms`、`qml` 目录。无需安装 Qt 或 Visual Studio。
 
 目标 Windows 11 x64。拖动面板；底部三个按钮依次暂停／播放、切高反差色带、切柔化。悬停显示标签，Tab／方向键／空格可操作，Esc关闭。时间、日期和天气为示例，没有真实启动／搜索功能。
