@@ -2,6 +2,8 @@
 
 Qt Quick 液态玻璃的 Windows／macOS 对照实验。同一块可拖动玻璃面板、持续运动的背景、边缘折射、柔化和高光。Qt 单面板的玻璃由自写 GLSL/QSB 绘制，不依赖苹果原生玻璃组件。
 
+2026-11-17用户Windows实机反馈：正常运行，与Mac版几乎没有差别，视觉效果认可。这是当前Demo的用户主观验收；未提供设备配置或量化性能数据，不能外推到所有硬件和完整产品。
+
 ## Windows 测试包
 
 2026-11-17已通过的版本：[下载 Windows x64 便携包](https://github.com/jsnjjnzx/CrossDemo/actions/runs/44106602358/artifacts/14338667795)（约30MB，Actions保留30天），[构建记录](https://github.com/jsnjjnzx/CrossDemo/actions/runs/44106602358)。源码提交`7662e2d`，完整部署后的25项图形检查通过。

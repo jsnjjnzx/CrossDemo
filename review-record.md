@@ -1,5 +1,9 @@
 # CrossDemo 审查记录
 
+## WIN-001：反馈记录审查（2026-11-17）
+
+已核对用户明确的Windows实际运行与视觉认可，将验收状态同步到spec／backlog／notes／test-report／AGENTS及README。只记录当前Demo的主观比较，不把未提供的设备配置或性能指标写成已通过；不把用户报告写成代理执行。本轮源码与workflow无修改，成功包继续对应7662e2d／Actions44106602358，无需重编。
+
 ## WIN-001：最终主审
 
 审查Windows-only辅助实现、CMake平台／编译器条件、QML和GLSL保持、ASCII暂存路径、固定安装器修复、动态部署／SDK隔离后复测、VC CRT、Actions最小权限和产物链接。源码／workflow修复均实际重新构建，未弱化shader像素断言以使CI通过。
