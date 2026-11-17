@@ -8,4 +8,6 @@ Windows源码／PowerShell／部署流程尚待首次Actions真实执行；不�
 
 首次Actions 44104445981失败于Qt安装器仓库布局解析，未执行C++编译或GPU测试，无Windows包。已依据Qt官方目录和aqt上游源码修复安装器选择，待新一轮实际结果；失败未记为通过。
 
+第二轮44105168224：Qt6.11.1安装成功，MSVC19.44识别成功，但qmlimportscanner不能识别中文源码路径，CMake配置失败；未编译或交付Windows包。改用忽略目录下的ASCII源码暂存路径，等待复验。Qt6TaskTree的可选插件依赖提示也记录，当前真正终止点是扫描器路径。
+
 待执行本机macOS跨平台源码构建／GPU回归、Actions Windows Release构建、Qt/QML与VC运行库部署、部署后GPU像素对照与zip检查。云端自检仅用于渲染正确性，用户实际Windows观感、DPI、驱动／性能未验证。

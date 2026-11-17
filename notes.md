@@ -9,3 +9,5 @@ Qt键盘例与Swift例保留作macOS比较。程序生成背景替代旧本地�
 本机Git／GitHub API连接出现过SSL／TLS超时；连接器读取正常但写入被integration权限拒绝。本机gh登录具备repo／workflow范围，已用其API核实空仓库，继续通过本机账户上传。根分支main、用户指定origin不变；内容按35文件暂存树校验。
 
 实际上传用Git CLI单次绕过故障环境代理成功，未更改系统代理。首轮Actions 44104445981停在安装阶段：aqt3.3.0不识别Qt6.11起按编译器拆分的目录，错误请求qt6_6111/qt6_6111/Updates.xml。已核实官方目录为qt6_6111_msvc2022_64，并核对aqt官方上游已有该解析修复；固定到5a49f2b391ae8ee1d3c0dd87f8b33c1d49a4deb7，保留Qt6.11.1，与本机一致。Python固定3.12避免无关最新解释器依赖构建漂移。
+
+第二轮44105168224安装Qt成功，CMake的qmlimportscanner报告中文源码路径不存在。仓库原目录保留，Windows脚本在build/windows-source复制同一份普通源码文件，以ASCII路径配置和部署QML，不修改算法或界面。所有暂存内容仍位于忽略的build目录。

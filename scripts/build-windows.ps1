@@ -1,10 +1,15 @@
 param([Parameter(Mandatory = $true)][string]$QtRoot)
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path -Parent $PSScriptRoot
-$source = Join-Path $repo '单界面液态玻璃'
+$original = Join-Path $repo '单界面液态玻璃'
+$source = Join-Path $repo 'build/windows-source'
 $build = Join-Path $repo 'build/windows'
 $bundle = Join-Path $repo 'dist/windows'
 $evidence = Join-Path $repo 'build/windows-evidence'
+
+# Qt's Windows command-line QML tools can misread non-ASCII source paths.
+New-Item -ItemType Directory -Force $source | Out-Null
+Get-ChildItem -LiteralPath $original -File | Copy-Item -Destination $source -Force
 
 cmake -S $source -B $build -G 'Visual Studio 17 2022' -A x64 "-DCMAKE_PREFIX_PATH=$QtRoot" -DCMAKE_CONFIGURATION_TYPES=Release
 if ($LASTEXITCODE -ne 0) { throw 'CMake configuration failed' }
