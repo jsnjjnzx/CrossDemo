@@ -1,0 +1,16 @@
+/*.app/
+/**/*.app/
+/wallpaper.png
+/build/
+/dist/
+**/.build/
+**/CMakeFiles/
+**/CMakeCache.txt
+**/Testing/
+.DS_Store
+*.local.json
+*.local.xcconfig
+*.p12
+*.pfx
+*.mobileprovision
+*.log

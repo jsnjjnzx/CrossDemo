@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.24)
+project(QtGlassKeyboard VERSION 1.0 LANGUAGES CXX OBJCXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_OBJCXX_STANDARD 17)
+set(CMAKE_OSX_DEPLOYMENT_TARGET 26.0)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Widgets)
+qt_standard_project_setup()
+qt_add_executable(QtGlassKeyboard MACOSX_BUNDLE main.cpp NativeGlass.mm)
+target_link_libraries(QtGlassKeyboard PRIVATE Qt6::Widgets "-framework AppKit" "-framework QuartzCore")
+target_compile_options(QtGlassKeyboard PRIVATE -Wall -Wextra -Werror)
+set_source_files_properties(NativeGlass.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")
+set_target_properties(QtGlassKeyboard PROPERTIES
+    MACOSX_BUNDLE_GUI_IDENTIFIER local.faunabox.qt-glass-demo
+    MACOSX_BUNDLE_BUNDLE_NAME "Qt Glass Keyboard"
+    MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Info.plist")
+set_source_files_properties(assets/demo-background.png PROPERTIES QT_RESOURCE_ALIAS "wallpaper.png")
+qt_add_resources(QtGlassKeyboard media PREFIX "/" FILES assets/demo-background.png)
+enable_testing()
+add_test(NAME qt-glass-self-test COMMAND QtGlassKeyboard --self-test)
+set_tests_properties(qt-glass-self-test PROPERTIES TIMEOUT 25)

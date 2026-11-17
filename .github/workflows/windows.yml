@@ -1,0 +1,48 @@
+name: Windows Qt Demo
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-2022
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Install Qt 6.11.1
+        uses: jurplel/install-qt-action@b344308e4483fc892e0d27b3cd1b173ebdd95f06
+        with:
+          version: '6.11.1'
+          arch: win64_msvc2022_64
+          modules: qtshadertools
+          cache: true
+      - name: Build, deploy and check the portable app
+        shell: pwsh
+        env:
+          QSG_RHI_BACKEND: d3d11
+          QSG_RHI_PREFER_SOFTWARE_RENDERER: '1'
+          QT_FORCE_STDERR_LOGGING: '1'
+        run: ./scripts/build-windows.ps1 -QtRoot $env:QT_ROOT_DIR
+      - name: Upload Windows portable app
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: CrossDemo-Windows-x64
+          path: dist/windows/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload rendering evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: Windows-rendering-evidence
+          path: |
+            build/windows-evidence/
+            build/windows/Testing/Temporary/LastTest.log
+          if-no-files-found: ignore
+          retention-days: 30
