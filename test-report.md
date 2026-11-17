@@ -6,4 +6,6 @@
 
 Windows源码／PowerShell／部署流程尚待首次Actions真实执行；不能把本机检查写成Windows构建通过。以下为开始时的计划。
 
+首次Actions 44104445981失败于Qt安装器仓库布局解析，未执行C++编译或GPU测试，无Windows包。已依据Qt官方目录和aqt上游源码修复安装器选择，待新一轮实际结果；失败未记为通过。
+
 待执行本机macOS跨平台源码构建／GPU回归、Actions Windows Release构建、Qt/QML与VC运行库部署、部署后GPU像素对照与zip检查。云端自检仅用于渲染正确性，用户实际Windows观感、DPI、驱动／性能未验证。
